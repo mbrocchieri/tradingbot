@@ -1,0 +1,1031 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<xsd:schema xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <xsd:element abstract="true" name="rule"/>
+    <xsd:element abstract="true" name="indicator"/>
+    <xsd:element name="strategy">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="entryRule">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="rule"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+                <xsd:element name="exitRule">
+                    <xsd:complexType>
+                        <xsd:sequence>
+                            <xsd:element ref="rule"/>
+                        </xsd:sequence>
+                    </xsd:complexType>
+                </xsd:element>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.candles.BullishHaramiIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.volume.NVIIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.ParabolicSarIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="aF" type="xsd:decimal"/>
+                <xsd:element minOccurs="0" name="maxA" type="xsd:decimal"/>
+                <xsd:element minOccurs="0" name="increment" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.OpenPriceIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.candles.BearishHaramiIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.tradingbot.common.indicator.DoubleBottomIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.HighestValueIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.DXIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.SMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.ROCVIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ichimoku.IchimokuTenkanSenIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.StopLossRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="org.ta4j.core.indicators.helpers.ClosePriceIndicator"/>
+                <xsd:element name="lossPercentage" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.PeriodicalGrowthRateIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.StochasticOscillatorKIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="indicator"/>
+                    <xsd:element name="barCount" type="xsd:integer"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" ref="org.ta4j.core.indicators.helpers.HighPriceIndicator"/>
+                <xsd:element minOccurs="0" ref="org.ta4j.core.indicators.helpers.LowPriceIndicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element abstract="true" name="org.ta4j.core.Indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.UlcerIndexIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.DPOIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="indicator"/>
+                    <xsd:element name="barCount" type="xsd:integer"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.TradeCountIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.LowestValueIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ChandelierExitLongIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="k" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.DifferencePercentage" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="percentageThreshold" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.FisherIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.ZLEMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.FixedIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="values" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.candles.ThreeBlackCrowsIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="factor" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.TypicalPriceIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.rules.InSlopeRule" substitutionGroup="rule"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.CrossIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.StopGainRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="org.ta4j.core.indicators.helpers.ClosePriceIndicator"/>
+                <xsd:element name="gainPercentage" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.ClosePriceIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.CoppockCurveIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="longRoCBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="shortRoCBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="wmaBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.adx.MinusDIIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.StandardDeviationIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.tradingbot.common.indicator.SuperTrend" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="multiplier" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.CloseLocationValueIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.VolumeIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.RSIIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ichimoku.IchimokuKijunSenIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.keltner.KeltnerChannelMiddleIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element name="barCountEMA" type="xsd:integer"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="barCountEMA" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element abstract="true" name="org.ta4j.core.rules.AbstractRule"/>
+    <xsd:element name="org.ta4j.core.indicators.candles.BullishEngulfingIndicator" substitutionGroup="indicator"/>
+    <xsd:element abstract="true" name="org.tradingbot.common.indicator.AbstractSuperTrend"/>
+    <xsd:element name="org.ta4j.core.indicators.AccelerationDecelerationIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCountSma1" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="barCountSma2" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.AccumulationDistributionIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.AwesomeOscillatorIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" ref="indicator"/>
+                <xsd:element minOccurs="0" name="barCountSma1" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="barCountSma2" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.NotRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="rule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.UnstableIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="unstablePeriod" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.InPipeRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="upper" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+                <xsd:choice>
+                    <xsd:element name="lower" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.GainIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.SumIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.LossIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.OpenedPositionMinimumBarCountRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.SigmaIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element abstract="true" name="org.ta4j.core.indicators.CachedIndicator"/>
+    <xsd:element name="org.ta4j.core.indicators.candles.UpperShadowIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.rules.CrossedDownIndicatorRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="threshold" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.VWAPIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.FixedRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="indexes" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.bollinger.BollingerBandsMiddleIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.TripleEMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.LWMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.WaitForRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="tradeType" type="org.ta4j.core.Trade.TradeType"/>
+                <xsd:element name="numberOfBars" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.CCIIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.ChaikinOscillatorIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="shortBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="longBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.PVOIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.MassIndexIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="emaBarCount" type="xsd:integer"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.EMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.JustOnceRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" ref="rule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.IsRisingRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="minStrenght" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.IsLowestRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.OverIndicatorRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="threshold" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ROCIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ChandelierExitShortIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="k" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.DifferenceIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.tradingbot.common.indicator.PeakDivergenceIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.BooleanTransformIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="coefficient" type="xsd:decimal"/>
+                    <xsd:element name="type" type="org.ta4j.core.indicators.helpers.BooleanTransformIndicator.BooleanTransformSimpleType"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="type" type="org.ta4j.core.indicators.helpers.BooleanTransformIndicator.BooleanTransformType"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ChopIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="ciTimeFrame" type="xsd:integer"/>
+                <xsd:element name="scaleTo" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.MMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.StandardErrorIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.HighPriceIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.rules.IsEqualRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="value" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.CorrelationCoefficientIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ichimoku.IchimokuLineIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.MACDIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="shortBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="longBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.DoubleEMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.AmountIndicator" substitutionGroup="indicator"/>
+    <xsd:element abstract="true" name="org.ta4j.core.indicators.AbstractEMAIndicator"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.PriceVariationIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.rules.BooleanIndicatorRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.TrailingStopLossRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="org.ta4j.core.indicators.helpers.PriceIndicator"/>
+                <xsd:element name="lossPercentage" type="xsd:decimal"/>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.VarianceIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.tradingbot.common.indicator.DoubleTopIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.PreviousValueIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="n" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ichimoku.IchimokuChikouSpanIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="timeDelay" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.PlusDMIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.adx.PlusDIIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.WilliamsRIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="org.ta4j.core.indicators.helpers.ClosePriceIndicator"/>
+                    <xsd:element name="barCount" type="xsd:integer"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" ref="org.ta4j.core.indicators.helpers.HighPriceIndicator"/>
+                <xsd:element minOccurs="0" ref="org.ta4j.core.indicators.helpers.LowPriceIndicator"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element abstract="true" name="org.ta4j.core.indicators.RecursiveCachedIndicator"/>
+    <xsd:element name="org.ta4j.core.indicators.AroonOscillatorIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.AroonUpIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="indicator"/>
+                    <xsd:element name="barCount" type="xsd:integer"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.statistics.MeanDeviationIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.KSTIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="rcma1SMABarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma1ROCBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma2SMABarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma2ROCBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma3SMABarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma3ROCBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma4SMABarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="rcma4ROCBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.AroonDownIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element ref="indicator"/>
+                    <xsd:element name="barCount" type="xsd:integer"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element abstract="true" name="org.ta4j.core.indicators.AbstractIndicator"/>
+    <xsd:element abstract="true" name="org.ta4j.core.Rule"/>
+    <xsd:element name="org.ta4j.core.rules.CrossedUpIndicatorRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="threshold" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.LowPriceIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.adx.ADXIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:choice>
+                    <xsd:element name="diBarCount" type="xsd:integer"/>
+                    <xsd:element name="barCount" type="xsd:integer"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="adxBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ichimoku.IchimokuSenkouSpanBIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element minOccurs="0" name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="offset" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.OnBalanceVolumeIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.tradingbot.common.indicator.SuperTrendWithTrend" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="multiplier" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.KAMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="barCountEffectiveRatio" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="barCountFast" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="barCountSlow" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.ATRIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.HMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.ConstantIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="t" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.WMAIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.RWIHighIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.ChaikinMoneyFlowIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.IsHighestRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.TRIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.statistics.PearsonCorrelationIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.tradingbot.common.indicator.SuperTrendWithTrendAndSignal" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="multiplier" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element abstract="true" name="org.ta4j.core.indicators.helpers.PriceIndicator"/>
+    <xsd:element name="org.ta4j.core.indicators.statistics.SimpleLinearRegressionIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="type" type="org.ta4j.core.indicators.statistics.SimpleLinearRegressionIndicator.SimpleLinearRegressionType"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.CMOIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.IIIIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.RWILowIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.tradingbot.common.indicator.DoubleConstantIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="aDouble" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.volume.PVIIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.candles.ThreeWhiteSoldiersIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="factor" type="xsd:decimal"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.tradingbot.common.indicator.AwesomeIndicatorWithTrend" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.statistics.CovarianceIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.UnderIndicatorRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:choice>
+                    <xsd:element name="threshold" type="xsd:decimal"/>
+                    <xsd:element ref="indicator"/>
+                </xsd:choice>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.bollinger.PercentBIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="k" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.MinusDMIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.candles.DojiIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element name="bodyFactor" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.XorRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="rule"/>
+                <xsd:element ref="rule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.helpers.MedianPriceIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.RAVIIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="shortSmaBarCount" type="xsd:integer"/>
+                <xsd:element name="longSmaBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.IsFallingRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="minStrenght" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.BooleanRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element name="satisfied" type="xsd:boolean"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.PPOIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element minOccurs="0" name="shortBarCount" type="xsd:integer"/>
+                <xsd:element minOccurs="0" name="longBarCount" type="xsd:integer"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.candles.RealBodyIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator" substitutionGroup="indicator">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="indicator"/>
+                <xsd:element ref="indicator"/>
+                <xsd:element name="barCount" type="xsd:integer"/>
+                <xsd:choice>
+                    <xsd:element name="strictType" type="org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator.ConvergenceDivergenceStrictType"/>
+                    <xsd:element name="type" type="org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator.ConvergenceDivergenceType"/>
+                </xsd:choice>
+                <xsd:element minOccurs="0" name="minStrength" type="xsd:double"/>
+                <xsd:element minOccurs="0" name="minSlope" type="xsd:double"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.indicators.candles.LowerShadowIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.indicators.candles.BearishEngulfingIndicator" substitutionGroup="indicator"/>
+    <xsd:element name="org.ta4j.core.rules.AndRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="rule"/>
+                <xsd:element ref="rule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:element name="org.ta4j.core.rules.OrRule" substitutionGroup="rule">
+        <xsd:complexType>
+            <xsd:sequence>
+                <xsd:element ref="rule"/>
+                <xsd:element ref="rule"/>
+            </xsd:sequence>
+        </xsd:complexType>
+    </xsd:element>
+    <xsd:simpleType final="restriction" name="org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator.ConvergenceDivergenceStrictType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="positiveConvergentStrict"/>
+            <xsd:enumeration value="negativeConvergentStrict"/>
+            <xsd:enumeration value="positiveDivergentStrict"/>
+            <xsd:enumeration value="negativeDivergentStrict"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType final="restriction" name="org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator.ConvergenceDivergenceType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="positiveConvergent"/>
+            <xsd:enumeration value="negativeConvergent"/>
+            <xsd:enumeration value="positiveDivergent"/>
+            <xsd:enumeration value="negativeDivergent"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType final="restriction" name="org.ta4j.core.indicators.helpers.BooleanTransformIndicator.BooleanTransformType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="equals"/>
+            <xsd:enumeration value="isGreaterThan"/>
+            <xsd:enumeration value="isGreaterThanOrEqual"/>
+            <xsd:enumeration value="isLessThan"/>
+            <xsd:enumeration value="isLessThanOrEqual"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType final="restriction" name="org.ta4j.core.indicators.statistics.SimpleLinearRegressionIndicator.SimpleLinearRegressionType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="Y"/>
+            <xsd:enumeration value="SLOPE"/>
+            <xsd:enumeration value="INTERCEPT"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType final="restriction" name="org.ta4j.core.indicators.helpers.BooleanTransformIndicator.BooleanTransformSimpleType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="isNaN"/>
+            <xsd:enumeration value="isNegative"/>
+            <xsd:enumeration value="isNegativeOrZero"/>
+            <xsd:enumeration value="isPositive"/>
+            <xsd:enumeration value="isPositiveOrZero"/>
+            <xsd:enumeration value="isZero"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+    <xsd:simpleType final="restriction" name="org.ta4j.core.Trade.TradeType">
+        <xsd:restriction base="xsd:string">
+            <xsd:enumeration value="BUY"/>
+            <xsd:enumeration value="SELL"/>
+        </xsd:restriction>
+    </xsd:simpleType>
+</xsd:schema>

@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<strategy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="strategy.xsd">
+    <entryRule>
+        <org.ta4j.core.rules.CrossedDownIndicatorRule>
+            <org.ta4j.core.indicators.EMAIndicator>
+                <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+                <barCount>9</barCount>
+            </org.ta4j.core.indicators.EMAIndicator>
+            <org.ta4j.core.indicators.EMAIndicator>
+                <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+                <barCount>20</barCount>
+            </org.ta4j.core.indicators.EMAIndicator>
+        </org.ta4j.core.rules.CrossedDownIndicatorRule>
+    </entryRule>
+    <exitRule>
+        <org.ta4j.core.rules.CrossedUpIndicatorRule>
+            <org.ta4j.core.indicators.EMAIndicator>
+                <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+                <barCount>9</barCount>
+            </org.ta4j.core.indicators.EMAIndicator>
+            <org.ta4j.core.indicators.EMAIndicator>
+                <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+                <barCount>20</barCount>
+            </org.ta4j.core.indicators.EMAIndicator>
+        </org.ta4j.core.rules.CrossedUpIndicatorRule>
+    </exitRule>
+</strategy>

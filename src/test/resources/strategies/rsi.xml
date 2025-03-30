@@ -1,0 +1,21 @@
+<strategy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+          xsi:noNamespaceSchemaLocation="strategy.xsd">
+    <entryRule>
+        <org.ta4j.core.rules.CrossedUpIndicatorRule>
+            <org.ta4j.core.indicators.RSIIndicator>
+                <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+                <barCount>${barCount}</barCount>
+            </org.ta4j.core.indicators.RSIIndicator>
+            <threshold>${threshold}</threshold>
+        </org.ta4j.core.rules.CrossedUpIndicatorRule>
+    </entryRule>
+    <exitRule>
+        <org.ta4j.core.rules.CrossedDownIndicatorRule>
+            <org.ta4j.core.indicators.RSIIndicator>
+                <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+                <barCount>${barCount}</barCount>
+            </org.ta4j.core.indicators.RSIIndicator>
+            <threshold>${threshold}</threshold>
+        </org.ta4j.core.rules.CrossedDownIndicatorRule>
+    </exitRule>
+</strategy>

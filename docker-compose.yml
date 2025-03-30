@@ -1,0 +1,48 @@
+version: "3.8"
+
+networks:
+  tradingbot:
+    name: tradingbot
+
+services:
+  test:
+    build:
+      context: ./
+      target: test
+      args:
+        DATABASE_URL: "jdbc:postgresql://db-test:5432/tb?schema=public"
+        DATABASE_LOGIN: postgres
+        DATABASE_PASSWORD: postgres
+    depends_on:
+      - db-test
+    volumes:
+      - /home/mathieu/.m2:/root/.m2
+    networks:
+      - tradingbot
+
+  api:
+    build:
+      context: ./
+      target: runner
+
+  db-test:
+    image: postgres:15.1-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: tb
+    networks:
+      - tradingbot
+
+  db:
+    image: postgres:15.1-alpine
+    ports:
+      - "5432:5432"
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_USER: postgres
+      POSTGRES_DB: tb

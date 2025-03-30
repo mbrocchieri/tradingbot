@@ -1,0 +1,29 @@
+<?xml version="1.0"?>
+
+<strategy xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="strategy.xsd">
+  <entryRule>
+    <org.ta4j.core.rules.BooleanIndicatorRule>
+      <org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator>
+        <org.ta4j.core.indicators.helpers.ClosePriceIndicator></org.ta4j.core.indicators.helpers.ClosePriceIndicator>
+        <org.ta4j.core.indicators.RSIIndicator>
+          <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+          <barCount>14</barCount>
+        </org.ta4j.core.indicators.RSIIndicator>
+        <barCount>14</barCount>
+        <org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator.ConvergenceDivergenceType>positiveConvergent</org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator.ConvergenceDivergenceType>
+      </org.ta4j.core.indicators.helpers.ConvergenceDivergenceIndicator>
+    </org.ta4j.core.rules.BooleanIndicatorRule>
+  </entryRule>
+  <exitRule>
+    <org.ta4j.core.rules.OrRule>
+      <org.ta4j.core.rules.StopGainRule>
+        <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+        <gainPercentage>10</gainPercentage>
+      </org.ta4j.core.rules.StopGainRule>
+      <org.ta4j.core.rules.StopLossRule>
+        <org.ta4j.core.indicators.helpers.ClosePriceIndicator />
+        <lossPercentage>2</lossPercentage>
+      </org.ta4j.core.rules.StopLossRule>
+    </org.ta4j.core.rules.OrRule>
+  </exitRule>
+</strategy>
